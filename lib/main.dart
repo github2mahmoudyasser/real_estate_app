@@ -1,17 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'core/app_router/app_router.dart';
 import 'core/constants/api_constant.dart';
 import 'core/constants/bloc_abserver.dart';
 import 'core/constants/dio_helper.dart';
-import 'feature/splash_screen/ui/splash_screen.dart';
+import 'core/constants/preference_manager.dart';
+import 'core/di/service_locator.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  await setupServiceLocator();
+
   // Initialize SharedPreferences
-  //await PreferenceManager().init();
+  await sl< PreferenceManager>().init();
    //Initialize ScreenUtil
   await ScreenUtil.ensureScreenSize();
+
+  final AppRouter appRouter = AppRouter();
+
   // Initialize Dio
   DioHelper.init(baseUrl: ApiConstant.baseUrl);
    //Initialize AppBlocObserver
@@ -19,11 +27,13 @@ void main() async {
  //  Initialize dependency injection
  // await setupLocator();
   // Run the app
-  runApp(const MyApp());
+   runApp( MyApp(appRouter: appRouter));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final AppRouter appRouter;
+  const MyApp({super.key, required this.appRouter});
+
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
@@ -34,7 +44,11 @@ class MyApp extends StatelessWidget {
         return MaterialApp(
           title: 'Real Estate',
           debugShowCheckedModeBanner: false,
-          home: const SplashScreen(),
+
+          onGenerateRoute: appRouter.generateRoute,
+          initialRoute: '/splash',
+          // ------------------
+
         );
       },
     );

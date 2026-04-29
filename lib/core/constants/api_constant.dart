@@ -1,13 +1,13 @@
 class ApiConstant {
   /// Base URL for API endpoints
-  static const String baseUrl = 'https://grocery.newcinderella.online/api';
+  static const String baseUrl = 'https://real.newcinderella.online';
 
   /// Fake Token
   static const String token =
       '803|6MTzKNnf8qsb1w3axoerLKIP5r5Imf9XmQUwVJzid742999d';
 
   /// API endpoints
-  static const String login = '/auth/login';
+  static const String login = '/api/v1/auth/login';
   static const String logout = '/auth/logout';
   static const String getProfile = '/profile';
   static const String signup = '/auth/register';

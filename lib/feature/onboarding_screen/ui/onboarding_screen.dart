@@ -6,7 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:realstateapp/feature/login_screen/presentation/ui/login_view.dart';
 import 'package:realstateapp/shared/customindicator.dart';
 import '../../../core/utils/app_colors.dart';
-import '../../../shared/custombotton.dart';
+import '../../../core/shared_widgets/custombotton.dart';
 import '../widgets/circle_button.dart';
 
 class OnboardingScreen extends StatelessWidget {
@@ -101,9 +101,7 @@ class OnboardingScreen extends StatelessWidget {
                   CustomButton(
                     text: 'Continue',
                     onPressed: () {
-                      Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(builder: (context) => const LoginView()),
-                      );
+                      Navigator.pushReplacementNamed(context, '/login');
                     },
                   ),
 
