@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -24,15 +22,8 @@ class CustomCircleButton extends StatelessWidget {
       child: Container(
         width: 44.w,
         height: 44.w,
-        decoration: BoxDecoration(
-          color: bgColor,
-          shape: BoxShape.circle,
-        ),
-        child: Icon(
-          icon,
-          color: iconColor,
-          size: 15.sp,
-        ),
+        decoration: BoxDecoration(color: bgColor, shape: BoxShape.circle),
+        child: Icon(icon, color: iconColor, size: 15.sp),
       ),
     );
   }

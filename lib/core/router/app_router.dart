@@ -12,6 +12,7 @@ class AppRoutes {
   static const String map = '/map';
   static const String history = '/history';
   static const String profile = '/profile';
+  static const String payment = '/payment';
 }
 
 class AppRouter {
@@ -21,19 +22,25 @@ class AppRouter {
       ShellRoute(
         builder: (context, state, child) => MainScaffold(child: child),
         routes: [
-          GoRoute(path: AppRoutes.home, builder: (_, _) => const HomePage()),
+          GoRoute(
+            path: AppRoutes.home,
+            builder: (context, state) => const HomePage(),
+          ),
           GoRoute(
             path: AppRoutes.favorites,
-            builder: (_, _) => const FavoritesPage(),
+            builder: (context, state) => const FavoritesPage(),
           ),
-          GoRoute(path: AppRoutes.map, builder: (_, _) => const MapPage()),
+          GoRoute(
+            path: AppRoutes.map,
+            builder: (context, state) => const MapPage(),
+          ),
           GoRoute(
             path: AppRoutes.history,
-            builder: (_, _) => const HistoryPage(),
+            builder: (context, state) => const HistoryPage(),
           ),
           GoRoute(
             path: AppRoutes.profile,
-            builder: (_, _) => const ProfilePage(),
+            builder: (context, state) => const ProfilePage(),
           ),
         ],
       ),
