@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:realstateapp/core/router/app_router.dart';
 import 'core/constants/api_constant.dart';
 import 'core/constants/bloc_abserver.dart';
 import 'core/constants/dio_helper.dart';
@@ -10,14 +11,14 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   // Initialize SharedPreferences
   //await PreferenceManager().init();
-   //Initialize ScreenUtil
+  //Initialize ScreenUtil
   await ScreenUtil.ensureScreenSize();
   // Initialize Dio
   DioHelper.init(baseUrl: ApiConstant.baseUrl);
-   //Initialize AppBlocObserver
+  //Initialize AppBlocObserver
   Bloc.observer = AppBlocObserver();
- //  Initialize dependency injection
- // await setupLocator();
+  //  Initialize dependency injection
+  // await setupLocator();
   // Run the app
   runApp(const MyApp());
 }
@@ -31,10 +32,10 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {
-        return MaterialApp(
+        return MaterialApp.router(
           title: 'Real Estate',
           debugShowCheckedModeBanner: false,
-          home: const SplashScreen(),
+          routerConfig: AppRouter.router,
         );
       },
     );
