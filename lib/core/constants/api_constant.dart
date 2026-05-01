@@ -1,6 +1,6 @@
 class ApiConstant {
   /// Base URL for API endpoints
-  static const String baseUrl = 'https://grocery.newcinderella.online/api';
+  static const String baseUrl = 'https://real.newcinderella.online';
 
   /// Fake Token
   static const String token =
@@ -42,6 +42,8 @@ class ApiConstant {
   static String meals(int subcategoryId) {
     return "/subcategories/$subcategoryId/meals";
   }
+
+  static const String orders = '/api/v1/orders';
 
   /// Timeout duration in seconds
   static const int connectTimeout = 30;

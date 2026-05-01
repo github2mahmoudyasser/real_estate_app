@@ -1,12 +1,11 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:realstateapp/feature/login_screen/presentation/ui/login_view.dart';
 import 'package:realstateapp/shared/customindicator.dart';
+
 import '../../../core/utils/app_colors.dart';
 import '../../../shared/custombotton.dart';
+import '../../login_screen/presentation/ui/login_view.dart';
 import '../widgets/circle_button.dart';
 
 class OnboardingScreen extends StatelessWidget {
@@ -33,7 +32,6 @@ class OnboardingScreen extends StatelessWidget {
             ),
           ),
 
-
           Expanded(
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 16.w), //
@@ -44,7 +42,8 @@ class OnboardingScreen extends StatelessWidget {
 
                   Text(
                     'Find Your Perfect Home, Anywhere',
-                    style: GoogleFonts.poppins( //
+                    style: GoogleFonts.poppins(
+                      //
                       fontSize: 20.sp, //
                       fontWeight: FontWeight.w600, //
                       color: AppColors.primaryBlack, //
@@ -57,7 +56,8 @@ class OnboardingScreen extends StatelessWidget {
                   // الوصف
                   Text(
                     'Start your journey with a comfortable and reliable home search.',
-                    style:GoogleFonts.poppins( //
+                    style: GoogleFonts.poppins(
+                      //
                       fontSize: 14.sp, //
                       fontWeight: FontWeight.w400, //
                       color: AppColors.primaryBlack.withOpacity(0.52), //
@@ -67,12 +67,11 @@ class OnboardingScreen extends StatelessWidget {
 
                   SizedBox(height: 12.h),
 
-
-                   // indicator
+                  // indicator
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                     CustomIndicator(),
+                      CustomIndicator(),
 
                       //circle button
                       Row(
@@ -97,12 +96,14 @@ class OnboardingScreen extends StatelessWidget {
 
                   SizedBox(height: 35.h),
 
-                   // continue button
+                  // continue button
                   CustomButton(
                     text: 'Continue',
                     onPressed: () {
                       Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(builder: (context) => const LoginView()),
+                        MaterialPageRoute(
+                          builder: (context) => const LoginView(),
+                        ),
                       );
                     },
                   ),
