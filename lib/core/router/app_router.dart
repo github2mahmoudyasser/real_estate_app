@@ -1,4 +1,8 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:realstateapp/core/di/service_locator.dart';
+import 'package:realstateapp/features/booking/presentation/cubit/booking_cubit.dart';
+import 'package:realstateapp/features/booking/presentation/screens/booking_summary_screen.dart';
 import 'package:realstateapp/shared/main_scaffold.dart';
 
 import '../../features/favorites/presentation/pages/favorites_page.dart';
@@ -6,7 +10,6 @@ import '../../features/history/presentation/pages/history_page.dart';
 import '../../features/home/presentation/pages/home_page.dart';
 import '../../features/map/presentation/pages/map_page.dart';
 import '../../features/profile/presentation/pages/profile_page.dart';
-import '../../features/booking/presentation/screens/request_to_book_screen.dart';
 
 class AppRoutes {
   static const String home = '/';
@@ -47,7 +50,10 @@ class AppRouter {
           ),
           GoRoute(
             path: AppRoutes.booking,
-            builder: (context, state) => const RequestToBookScreen(),
+            builder: (context, state) => BlocProvider(
+              create: (_) => sl<BookingCubit>()..load(),
+              child: const BookingSummaryScreen(),
+            ),
           ),
         ],
       ),
