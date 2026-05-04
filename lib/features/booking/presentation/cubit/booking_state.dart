@@ -1,5 +1,3 @@
-// features/booking/presentation/bloc/booking_state.dart
-
 import 'package:equatable/equatable.dart';
 
 import '../../domain/entities/booking_entity.dart';

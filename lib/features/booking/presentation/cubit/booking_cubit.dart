@@ -1,5 +1,3 @@
-// features/booking/presentation/bloc/booking_cubit.dart
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../domain/entities/addon_entity.dart';
@@ -23,9 +21,9 @@ class BookingCubit extends Cubit<BookingState> {
   BookingCubit({
     required GetPropertyDetailsUseCase getPropertyDetailsUseCase,
     required CreateOrderUseCase createOrderUseCase,
-  })  : _getPropertyDetailsUseCase = getPropertyDetailsUseCase,
-        _createOrderUseCase = createOrderUseCase,
-        super(const BookingInitial());
+  }) : _getPropertyDetailsUseCase = getPropertyDetailsUseCase,
+       _createOrderUseCase = createOrderUseCase,
+       super(const BookingInitial());
 
   BookingEntity get _currentBooking {
     final state = this.state;
@@ -33,10 +31,7 @@ class BookingCubit extends Cubit<BookingState> {
     if (state is BookingStepUpdated) return state.booking;
     if (state is BookingOrderCreated) return state.booking;
     if (state is BookingSuccess) return state.booking;
-    return BookingEntity(
-      propertyId: _kStaticPropertyId,
-      addons: defaultAddons,
-    );
+    return BookingEntity(propertyId: _kStaticPropertyId, addons: defaultAddons);
   }
 
   Future<void> loadProperty() async {
