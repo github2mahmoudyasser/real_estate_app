@@ -15,28 +15,65 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   });
 
   @override
-  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight + 1);
 
   @override
   Widget build(BuildContext context) {
-    return AppBar(
-      automaticallyImplyLeading: false,
-      centerTitle: true,
-      elevation: 0,
-      title: Text(title, style: const TextStyle(fontWeight: FontWeight.bold)),
+    return Material(
+      color: Colors.white,
+      child: Column(
+        children: [
+          AppBar(
+            automaticallyImplyLeading: false,
+            centerTitle: true,
+            elevation: 0,
+            backgroundColor: Colors.white,
 
-      leading: IconButton(
-        icon: const Icon(Icons.arrow_back_ios_new),
-        onPressed: onBack ?? () => Navigator.pop(context),
+            // 🔹 Back button with border
+            leading: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: InkWell(
+                onTap: onBack ?? () => Navigator.pop(context),
+                borderRadius: BorderRadius.circular(24),
+                child: Container(
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Colors.white,
+                    border: Border.all(color: Colors.black, width: 2),
+                  ),
+                  child: const Icon(
+                    Icons.arrow_back,
+                    size: 24,
+                    color: Colors.black,
+                  ),
+                ),
+              ),
+            ),
+
+            title: Text(
+              title,
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+              ),
+            ),
+
+            // actions: [
+            //   IconButton(
+            //     icon: const Icon(Icons.search, color: Colors.black),
+            //     onPressed: onSearch,
+            //   ),
+            //   IconButton(
+            //     icon: const Icon(Icons.shopping_cart_outlined,
+            //         color: Colors.black),
+            //     onPressed: onCart,
+            //   ),
+            // ],
+          ),
+
+          Container(height: 1, color: Colors.grey.shade200),
+        ],
       ),
-
-      actions: [
-        IconButton(icon: const Icon(Icons.search), onPressed: onSearch),
-        IconButton(
-          icon: const Icon(Icons.shopping_cart_outlined),
-          onPressed: onCart,
-        ),
-      ],
     );
   }
 }

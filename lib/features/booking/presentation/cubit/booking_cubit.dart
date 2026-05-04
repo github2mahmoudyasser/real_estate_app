@@ -17,27 +17,25 @@ class BookingCubit extends Cubit<BookingState> {
        _createOrder = createOrderUseCase,
        super(BookingState.initial());
 
-  Future<void> load() async {
-    emit(state.copyWith(loading: true));
+  Future<void> loadProperty() async {
+    emit(state.loadingState());
 
     final result = await _getProperty(_propertyId);
 
     result.fold(
-      (f) => emit(state.copyWith(loading: false, error: f.message)),
-      (property) => emit(state.copyWith(loading: false, property: property)),
+      (f) => emit(state.errorState(f.message)),
+      (property) => emit(state.propertyLoaded(property)),
     );
   }
 
-  Future<void> loadProperty() => load();
-
   Future<void> createOrder() async {
-    emit(state.copyWith(loading: true));
+    emit(state.loadingState());
 
     final result = await _createOrder(_propertyId);
 
     result.fold(
-      (f) => emit(state.copyWith(loading: false, error: f.message)),
-      (order) => emit(state.copyWith(loading: false, order: order)),
+      (f) => emit(state.errorState(f.message)),
+      (order) => emit(state.orderCreated(order)),
     );
   }
 }

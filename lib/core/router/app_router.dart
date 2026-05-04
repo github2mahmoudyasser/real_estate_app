@@ -1,7 +1,4 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:realstateapp/core/di/service_locator.dart';
-import 'package:realstateapp/features/booking/presentation/cubit/booking_cubit.dart';
 import 'package:realstateapp/features/booking/presentation/screens/booking_summary_screen.dart';
 import 'package:realstateapp/shared/main_scaffold.dart';
 
@@ -50,10 +47,7 @@ class AppRouter {
           ),
           GoRoute(
             path: AppRoutes.booking,
-            builder: (context, state) => BlocProvider(
-              create: (_) => sl<BookingCubit>()..load(),
-              child: const BookingSummaryScreen(),
-            ),
+            builder: (context, state) => const BookingSummaryScreen(),
           ),
         ],
       ),
